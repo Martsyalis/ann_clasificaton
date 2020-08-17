@@ -105,18 +105,17 @@ ann.fit(x=X_train, y=y_train, batch_size=batch_size, epochs= epochs)
 
 ## Part 4 - Making the predictions and evaluating the model
 
-### Predicting the result of a single observation
 
+def singlePredictionHW():
+### Predicting the result of a single case
+  hw_dataset = pd.read_csv('./hw.csv')
+  hw = hw_dataset.iloc[:,:].values
+  hw[:,2] = le.transform(hw[:,2])
+  hw = np.array(ct.transform(hw)) # transform the X and convert it to np array
 
-hw_dataset = pd.read_csv('./hw.csv')
-hw = hw_dataset.iloc[:,:].values
-hw[:,2] = le.transform(hw[:,2])
-hw = np.array(ct.transform(hw)) # transform the X and convert it to np array
-
-hw = sc.transform(hw)
-prediction = ann.predict(x=hw)
-print(prediction)
-
+  hw = sc.transform(hw)
+  prediction = ann.predict(x=hw)
+  print(prediction)
 # Therefore, our ANN model predicts that this customer stays in the bank!
 
 # convert predictions to binary
