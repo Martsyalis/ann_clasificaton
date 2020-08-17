@@ -118,3 +118,17 @@ prediction = ann.predict(x=hw)
 print(prediction)
 
 # Therefore, our ANN model predicts that this customer stays in the bank!
+
+# convert predictions to binary
+y_pred =  ann.predict(X_test)
+y_pred = (y_pred > 0.5)
+
+# Compute Confusion Matrix
+from sklearn.metrics import confusion_matrix, accuracy_score
+cm = confusion_matrix(y_test, y_pred)
+print(cm)
+
+# Compute Accuracy Score
+acc = accuracy_score(y_test, y_pred)
+
+print(acc)
